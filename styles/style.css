@@ -11,8 +11,13 @@ html {
 body {
   font-family: "FuturaNow", "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0;
-  padding: 2rem;
   background: white;
+}
+
+@media (min-width: 810px) {
+  body {
+    padding: 2rem;
+  }
 }
 
 .carousel-wrapper {
@@ -73,11 +78,16 @@ body {
 }
 
 .product-card img {
+  aspect-ratio: 1 / 1;
   width: 100%;
   height: auto;
   object-fit: cover;
   margin-bottom: 1rem;
   flex-basis: 0;
+}
+
+.product-card img.loading {
+  visibility: hidden;
 }
 
 @media (min-width: 750px) {
@@ -114,7 +124,6 @@ body {
   font-weight: 700;
   letter-spacing: 2px;
   margin-top: 0.25rem;
-
   color: rgb(30, 30, 30);
 }
 
@@ -129,14 +138,12 @@ body {
 #next-btn {
   width: 16px;
   height: 44px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  background-color: transparent;
+  background: transparent no-repeat center / contain;
   border: 0;
   cursor: pointer;
   position: absolute;
   top: calc(50% - 22px);
+  opacity: 0;
 }
 
 #prev-btn {
@@ -147,6 +154,11 @@ body {
 #next-btn {
   right: 24px;
   background-image: url(../icons/arrow-right.svg);
+}
+
+#prev-btn:focus,
+#next-btn:focus {
+  -webkit-tap-highlight-color: transparent;
 }
 
 button {
